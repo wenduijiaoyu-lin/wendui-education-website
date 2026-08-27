@@ -1,0 +1,1868 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>问对教育｜为学校立魂的教育设计智库</title>
+  <meta name="description" content="问对教育智库，深耕学校文化顶层设计、教育品牌、空间场景与办学咨询，以为学校立魂为使命，让每个设计都成就一所好学校。">
+  <link rel="icon" href="assets/logo-gray.png">
+  <style>
+    :root {
+      --ink: #111315;
+      --ink-2: #202326;
+      --ink-3: #3a3e42;
+      --paper: #f5efe5;
+      --paper-2: #ebe2d4;
+      --white: #ffffff;
+      --red: #963331;
+      --red-2: #6d201d;
+      --gold: #d9bd82;
+      --blue: #1b6fb7;
+      --green: #4f8b77;
+      --line-dark: rgba(255,255,255,.16);
+      --line-light: rgba(17,19,21,.12);
+      --shadow: 0 24px 70px rgba(17,19,21,.14);
+      --serif: "Songti SC", "STSong", "Noto Serif SC", "SimSun", serif;
+      --sans: "PingFang SC", "Microsoft YaHei", "Noto Sans SC", Arial, sans-serif;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      background: var(--paper);
+      color: var(--ink);
+      font-family: var(--sans);
+      font-size: 16px;
+      line-height: 1.75;
+      letter-spacing: 0;
+      overflow-x: hidden;
+      text-rendering: optimizeLegibility;
+    }
+
+    ::selection {
+      background: var(--red);
+      color: var(--white);
+    }
+
+    img {
+      display: block;
+      max-width: 100%;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    button {
+      font: inherit;
+    }
+
+    .skip-link {
+      position: fixed;
+      top: -80px;
+      left: 16px;
+      z-index: 999;
+      background: var(--ink);
+      color: var(--white);
+      padding: 10px 14px;
+      border-radius: 4px;
+      transition: top .2s ease;
+    }
+
+    .skip-link:focus {
+      top: 16px;
+    }
+
+    .site-nav {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 50;
+      min-height: 76px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 18px 5.6vw;
+      color: var(--white);
+      transition: background .3s ease, color .3s ease, box-shadow .3s ease, min-height .3s ease, padding .3s ease;
+    }
+
+    .site-nav.is-scrolled {
+      min-height: 66px;
+      padding-top: 12px;
+      padding-bottom: 12px;
+      background: rgba(245,239,229,.92);
+      color: var(--ink);
+      box-shadow: 0 1px 0 var(--line-light);
+      backdrop-filter: blur(18px);
+      -webkit-backdrop-filter: blur(18px);
+    }
+
+    .brand {
+      display: inline-flex;
+      align-items: center;
+      gap: 14px;
+      min-width: 0;
+    }
+
+    .brand-mark {
+      width: 44px;
+      height: 44px;
+      border: 1px solid currentColor;
+      border-radius: 4px;
+      display: grid;
+      place-items: center;
+      overflow: hidden;
+      flex: 0 0 auto;
+    }
+
+    .brand-mark img {
+      width: 31px;
+      height: auto;
+      transform: scale(1.9);
+      transform-origin: center;
+    }
+
+    .brand-text {
+      display: grid;
+      line-height: 1.1;
+      white-space: nowrap;
+    }
+
+    .brand-text strong {
+      font-family: var(--serif);
+      font-size: 18px;
+      font-weight: 700;
+    }
+
+    .brand-text span {
+      color: currentColor;
+      opacity: .64;
+      font-size: 11px;
+      line-height: 1.45;
+      text-transform: uppercase;
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 28px;
+      font-size: 14px;
+    }
+
+    .nav-links a {
+      position: relative;
+      opacity: .82;
+      transition: opacity .2s ease;
+    }
+
+    .nav-links a::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      right: 0;
+      bottom: -9px;
+      height: 2px;
+      background: var(--gold);
+      transform: scaleX(0);
+      transform-origin: left;
+      transition: transform .2s ease;
+    }
+
+    .nav-links a:hover,
+    .nav-links a:focus-visible {
+      opacity: 1;
+    }
+
+    .nav-links a:hover::after,
+    .nav-links a:focus-visible::after {
+      transform: scaleX(1);
+    }
+
+    .nav-toggle {
+      display: none;
+      width: 44px;
+      height: 44px;
+      border: 1px solid currentColor;
+      border-radius: 4px;
+      background: transparent;
+      color: currentColor;
+      cursor: pointer;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .nav-toggle span,
+    .nav-toggle span::before,
+    .nav-toggle span::after {
+      display: block;
+      width: 20px;
+      height: 2px;
+      background: currentColor;
+      border-radius: 2px;
+      transition: transform .2s ease, opacity .2s ease;
+    }
+
+    .nav-toggle span {
+      position: relative;
+    }
+
+    .nav-toggle span::before,
+    .nav-toggle span::after {
+      content: "";
+      position: absolute;
+      left: 0;
+    }
+
+    .nav-toggle span::before {
+      top: -7px;
+    }
+
+    .nav-toggle span::after {
+      top: 7px;
+    }
+
+    body.menu-open .nav-toggle span {
+      background: transparent;
+    }
+
+    body.menu-open .nav-toggle span::before {
+      transform: translateY(7px) rotate(45deg);
+    }
+
+    body.menu-open .nav-toggle span::after {
+      transform: translateY(-7px) rotate(-45deg);
+    }
+
+    .hero {
+      position: relative;
+      min-height: 92svh;
+      display: grid;
+      align-items: end;
+      isolation: isolate;
+      overflow: hidden;
+      color: var(--white);
+      background: var(--ink);
+    }
+
+    .hero-media {
+      position: absolute;
+      inset: 0;
+      z-index: -2;
+    }
+
+    .hero-media img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center;
+      filter: saturate(.95) contrast(1.04);
+    }
+
+    .hero::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      z-index: -1;
+      background:
+        linear-gradient(90deg, rgba(17,19,21,.88) 0%, rgba(17,19,21,.66) 38%, rgba(17,19,21,.20) 74%),
+        linear-gradient(0deg, rgba(17,19,21,.58) 0%, rgba(17,19,21,.08) 52%);
+    }
+
+    .hero-inner {
+      width: min(1220px, 88vw);
+      margin: 0 auto;
+      padding: 132px 0 72px;
+      display: grid;
+      grid-template-columns: minmax(0, 720px) minmax(220px, 340px);
+      gap: 56px;
+      align-items: end;
+    }
+
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 24px;
+      color: var(--gold);
+      font-size: 14px;
+      font-weight: 600;
+    }
+
+    .eyebrow::before {
+      content: "";
+      width: 42px;
+      height: 1px;
+      background: currentColor;
+      opacity: .9;
+    }
+
+    .hero h1 {
+      font-family: var(--serif);
+      font-size: 104px;
+      line-height: 1.04;
+      font-weight: 800;
+    }
+
+    .hero-copy {
+      max-width: 640px;
+      margin-top: 28px;
+      color: rgba(255,255,255,.82);
+      font-size: 18px;
+    }
+
+    .hero-copy strong {
+      color: var(--white);
+      font-weight: 600;
+    }
+
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 14px;
+      margin-top: 34px;
+    }
+
+    .btn {
+      min-height: 48px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 9px;
+      padding: 13px 22px;
+      border: 1px solid transparent;
+      border-radius: 4px;
+      font-size: 15px;
+      font-weight: 600;
+      transition: transform .2s ease, background .2s ease, color .2s ease, border-color .2s ease;
+    }
+
+    .btn:hover,
+    .btn:focus-visible {
+      transform: translateY(-2px);
+    }
+
+    .btn-primary {
+      background: var(--white);
+      color: var(--ink);
+    }
+
+    .btn-primary:hover,
+    .btn-primary:focus-visible {
+      background: var(--gold);
+      color: var(--ink);
+    }
+
+    .btn-ghost {
+      color: var(--white);
+      border-color: rgba(255,255,255,.42);
+      background: rgba(255,255,255,.06);
+    }
+
+    .btn-ghost:hover,
+    .btn-ghost:focus-visible {
+      border-color: var(--white);
+      background: rgba(255,255,255,.14);
+    }
+
+    .hero-panel {
+      border-top: 1px solid var(--line-dark);
+      border-bottom: 1px solid var(--line-dark);
+      padding: 28px 0;
+      display: grid;
+      gap: 22px;
+    }
+
+    .hero-panel img {
+      width: 168px;
+      height: auto;
+      opacity: .92;
+    }
+
+    .hero-panel p {
+      color: rgba(255,255,255,.76);
+      font-size: 15px;
+    }
+
+    .hero-note {
+      display: grid;
+      grid-template-columns: auto 1fr;
+      gap: 14px;
+      align-items: start;
+      color: rgba(255,255,255,.82);
+      font-size: 14px;
+    }
+
+    .hero-note b {
+      color: var(--gold);
+      font-size: 32px;
+      line-height: 1;
+      font-weight: 700;
+    }
+
+    .stats-band {
+      background: var(--ink);
+      color: var(--white);
+      border-top: 1px solid var(--line-dark);
+    }
+
+    .stats-grid {
+      width: min(1220px, 88vw);
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      border-left: 1px solid var(--line-dark);
+    }
+
+    .stat {
+      min-height: 142px;
+      padding: 28px 24px;
+      border-right: 1px solid var(--line-dark);
+      display: grid;
+      align-content: center;
+      gap: 6px;
+    }
+
+    .stat strong {
+      color: var(--gold);
+      font-family: var(--serif);
+      font-size: 42px;
+      line-height: 1;
+    }
+
+    .stat span {
+      color: rgba(255,255,255,.68);
+      font-size: 14px;
+    }
+
+    .section {
+      padding: 112px 0;
+    }
+
+    .section-dark {
+      background: var(--ink);
+      color: var(--white);
+    }
+
+    .section-red {
+      background: var(--red-2);
+      color: var(--white);
+    }
+
+    .section-light {
+      background: var(--paper-2);
+    }
+
+    .wrap {
+      width: min(1220px, 88vw);
+      margin: 0 auto;
+    }
+
+    .section-head {
+      display: grid;
+      grid-template-columns: minmax(0, 650px) minmax(280px, 440px);
+      justify-content: space-between;
+      gap: 56px;
+      align-items: end;
+      margin-bottom: 54px;
+    }
+
+    .section-kicker {
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 18px;
+      color: var(--red);
+      font-size: 14px;
+      font-weight: 700;
+    }
+
+    .section-dark .section-kicker,
+    .section-red .section-kicker {
+      color: var(--gold);
+    }
+
+    .section-kicker::before {
+      content: "";
+      width: 38px;
+      height: 1px;
+      background: currentColor;
+    }
+
+    .section-title {
+      font-family: var(--serif);
+      font-size: 52px;
+      line-height: 1.18;
+      font-weight: 800;
+    }
+
+    .section-intro {
+      color: var(--ink-3);
+      font-size: 17px;
+    }
+
+    .section-dark .section-intro,
+    .section-red .section-intro {
+      color: rgba(255,255,255,.72);
+    }
+
+    .belief-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) minmax(320px, 460px);
+      gap: 56px;
+      align-items: start;
+    }
+
+    .belief-copy {
+      display: grid;
+      gap: 24px;
+    }
+
+    .lead {
+      font-family: var(--serif);
+      font-size: 30px;
+      line-height: 1.72;
+      font-weight: 700;
+    }
+
+    .lead em {
+      color: var(--red);
+      font-style: normal;
+    }
+
+    .body-text {
+      color: var(--ink-3);
+      font-size: 17px;
+    }
+
+    .principles {
+      display: grid;
+      gap: 12px;
+    }
+
+    .principle {
+      min-height: 118px;
+      background: rgba(255,255,255,.58);
+      border: 1px solid var(--line-light);
+      border-radius: 8px;
+      padding: 24px;
+      display: grid;
+      align-content: center;
+      transition: transform .2s ease, background .2s ease;
+    }
+
+    .principle:hover {
+      transform: translateY(-3px);
+      background: var(--white);
+    }
+
+    .principle small {
+      color: var(--red);
+      font-size: 13px;
+      font-weight: 700;
+    }
+
+    .principle strong {
+      margin-top: 6px;
+      font-family: var(--serif);
+      font-size: 22px;
+      line-height: 1.48;
+    }
+
+    .three-good {
+      margin-top: 64px;
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1px;
+      background: var(--line-light);
+      border: 1px solid var(--line-light);
+    }
+
+    .good-item {
+      background: var(--paper);
+      padding: 36px;
+      min-height: 230px;
+      display: grid;
+      align-content: start;
+      gap: 18px;
+    }
+
+    .good-item:nth-child(2) {
+      border-top: 5px solid var(--blue);
+    }
+
+    .good-item:nth-child(1) {
+      border-top: 5px solid var(--red);
+    }
+
+    .good-item:nth-child(3) {
+      border-top: 5px solid var(--green);
+    }
+
+    .good-item b {
+      font-family: var(--serif);
+      font-size: 28px;
+      line-height: 1.2;
+    }
+
+    .good-item p {
+      color: var(--ink-3);
+      font-size: 15px;
+    }
+
+    .service-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 16px;
+    }
+
+    .service-card {
+      min-height: 420px;
+      border: 1px solid var(--line-light);
+      border-radius: 8px;
+      background: var(--white);
+      padding: 34px;
+      display: grid;
+      grid-template-rows: auto auto 1fr;
+      gap: 18px;
+      box-shadow: 0 14px 40px rgba(17,19,21,.06);
+      transition: transform .2s ease, box-shadow .2s ease;
+    }
+
+    .service-card:hover {
+      transform: translateY(-5px);
+      box-shadow: var(--shadow);
+    }
+
+    .service-index {
+      width: 46px;
+      height: 46px;
+      border-radius: 50%;
+      display: grid;
+      place-items: center;
+      color: var(--white);
+      background: var(--ink);
+      font-weight: 700;
+    }
+
+    .service-card:nth-child(1) .service-index {
+      background: var(--red);
+    }
+
+    .service-card:nth-child(2) .service-index {
+      background: var(--blue);
+    }
+
+    .service-card:nth-child(3) .service-index {
+      background: var(--green);
+    }
+
+    .service-card h3 {
+      font-family: var(--serif);
+      font-size: 29px;
+      line-height: 1.2;
+    }
+
+    .service-card p {
+      color: var(--ink-3);
+      font-size: 15px;
+    }
+
+    .service-card ul {
+      align-self: end;
+      list-style: none;
+      border-top: 1px solid var(--line-light);
+    }
+
+    .service-card li {
+      padding: 12px 0;
+      border-bottom: 1px solid var(--line-light);
+      color: var(--ink-2);
+      font-size: 15px;
+    }
+
+    .method-layout {
+      display: grid;
+      grid-template-columns: minmax(320px, 460px) minmax(0, 1fr);
+      gap: 56px;
+      align-items: start;
+    }
+
+    .method-sticky {
+      position: sticky;
+      top: 96px;
+    }
+
+    .method-sticky img {
+      width: 100%;
+      aspect-ratio: 4 / 5;
+      object-fit: cover;
+      border-radius: 8px;
+      box-shadow: var(--shadow);
+    }
+
+    .method-list {
+      display: grid;
+      gap: 1px;
+      background: var(--line-dark);
+      border: 1px solid var(--line-dark);
+    }
+
+    .method-item {
+      background: var(--ink);
+      padding: 34px;
+      display: grid;
+      grid-template-columns: 76px minmax(0, 1fr);
+      gap: 26px;
+      align-items: start;
+    }
+
+    .method-item strong {
+      color: var(--gold);
+      font-family: var(--serif);
+      font-size: 42px;
+      line-height: 1;
+    }
+
+    .method-item h3 {
+      font-family: var(--serif);
+      font-size: 28px;
+      line-height: 1.24;
+      margin-bottom: 10px;
+    }
+
+    .method-item p {
+      color: rgba(255,255,255,.68);
+      font-size: 15px;
+    }
+
+    .process {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 1px;
+      background: var(--line-light);
+      border: 1px solid var(--line-light);
+    }
+
+    .process-step {
+      background: var(--paper);
+      min-height: 250px;
+      padding: 30px;
+      display: grid;
+      align-content: start;
+      gap: 18px;
+    }
+
+    .process-step span {
+      color: var(--red);
+      font-family: var(--serif);
+      font-size: 32px;
+      font-weight: 700;
+      line-height: 1;
+    }
+
+    .process-step h3 {
+      font-family: var(--serif);
+      font-size: 24px;
+      line-height: 1.3;
+    }
+
+    .process-step p {
+      color: var(--ink-3);
+      font-size: 15px;
+    }
+
+    .gallery {
+      display: grid;
+      grid-template-columns: 1.2fr .8fr;
+      gap: 16px;
+    }
+
+    .feature-photo,
+    .photo-tile {
+      position: relative;
+      overflow: hidden;
+      border-radius: 8px;
+      background: var(--ink-2);
+      color: var(--white);
+    }
+
+    .feature-photo {
+      min-height: 590px;
+    }
+
+    .photo-tile {
+      min-height: 287px;
+    }
+
+    .photo-stack {
+      display: grid;
+      gap: 16px;
+    }
+
+    .feature-photo img,
+    .photo-tile img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform .45s ease;
+    }
+
+    .feature-photo:hover img,
+    .photo-tile:hover img {
+      transform: scale(1.035);
+    }
+
+    .photo-caption {
+      position: absolute;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      padding: 26px;
+      background: linear-gradient(0deg, rgba(17,19,21,.78), rgba(17,19,21,0));
+    }
+
+    .photo-caption b {
+      display: block;
+      font-family: var(--serif);
+      font-size: 24px;
+      line-height: 1.3;
+    }
+
+    .photo-caption span {
+      display: block;
+      margin-top: 6px;
+      color: rgba(255,255,255,.72);
+      font-size: 14px;
+    }
+
+    .slogan-wall {
+      margin-top: 64px;
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 14px;
+    }
+
+    .slogan-card {
+      min-height: 180px;
+      border-radius: 8px;
+      background: var(--white);
+      padding: 26px;
+      display: grid;
+      align-content: space-between;
+      border: 1px solid var(--line-light);
+    }
+
+    .slogan-card q {
+      quotes: none;
+      font-family: var(--serif);
+      font-size: 24px;
+      font-weight: 700;
+      line-height: 1.55;
+    }
+
+    .slogan-card small {
+      margin-top: 18px;
+      color: var(--ink-3);
+      font-size: 13px;
+    }
+
+    .forum-layout {
+      display: grid;
+      grid-template-columns: minmax(0, .9fr) minmax(0, 1.1fr);
+      gap: 56px;
+      align-items: center;
+    }
+
+    .forum-copy {
+      display: grid;
+      gap: 24px;
+    }
+
+    .forum-copy h2 {
+      font-family: var(--serif);
+      font-size: 50px;
+      line-height: 1.18;
+    }
+
+    .forum-copy p {
+      color: rgba(255,255,255,.74);
+      font-size: 17px;
+    }
+
+    .forum-metrics {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1px;
+      background: rgba(255,255,255,.18);
+      border: 1px solid rgba(255,255,255,.18);
+    }
+
+    .forum-metrics div {
+      min-height: 118px;
+      padding: 22px;
+      background: var(--red-2);
+      display: grid;
+      align-content: center;
+      gap: 6px;
+    }
+
+    .forum-metrics b {
+      color: var(--gold);
+      font-family: var(--serif);
+      font-size: 32px;
+      line-height: 1;
+    }
+
+    .forum-metrics span {
+      color: rgba(255,255,255,.70);
+      font-size: 13px;
+    }
+
+    .forum-photo {
+      position: relative;
+      border-radius: 8px;
+      overflow: hidden;
+      box-shadow: var(--shadow);
+      min-height: 470px;
+    }
+
+    .forum-photo img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .expert-cloud {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+
+    .expert-pill {
+      min-height: 48px;
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      padding: 10px 18px;
+      border: 1px solid var(--line-light);
+      border-radius: 999px;
+      background: rgba(255,255,255,.58);
+      font-size: 15px;
+    }
+
+    .expert-pill b {
+      font-weight: 700;
+    }
+
+    .expert-pill span {
+      color: var(--ink-3);
+      font-size: 13px;
+    }
+
+    .team-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 16px;
+    }
+
+    .team-card {
+      min-height: 220px;
+      border: 1px solid var(--line-light);
+      border-radius: 8px;
+      background: rgba(255,255,255,.6);
+      padding: 28px;
+      display: grid;
+      gap: 10px;
+      align-content: start;
+    }
+
+    .team-card h3 {
+      font-family: var(--serif);
+      font-size: 28px;
+      line-height: 1.2;
+    }
+
+    .team-card .role {
+      color: var(--red);
+      font-weight: 700;
+      font-size: 14px;
+    }
+
+    .team-card p {
+      color: var(--ink-3);
+      font-size: 14px;
+    }
+
+    .contact {
+      background: var(--ink);
+      color: var(--white);
+      padding-bottom: 0;
+    }
+
+    .contact-layout {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) minmax(300px, 480px);
+      gap: 64px;
+      align-items: center;
+    }
+
+    .contact-copy h2 {
+      font-family: var(--serif);
+      font-size: 58px;
+      line-height: 1.18;
+      margin-bottom: 22px;
+    }
+
+    .contact-copy p {
+      color: rgba(255,255,255,.72);
+      font-size: 17px;
+    }
+
+    .contact-actions {
+      display: grid;
+      gap: 14px;
+    }
+
+    .contact-card {
+      min-height: 104px;
+      padding: 22px 24px;
+      border-radius: 8px;
+      border: 1px solid rgba(255,255,255,.18);
+      background: rgba(255,255,255,.06);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 22px;
+      transition: transform .2s ease, background .2s ease;
+    }
+
+    .contact-card:hover,
+    .contact-card:focus-visible {
+      transform: translateX(4px);
+      background: rgba(255,255,255,.10);
+    }
+
+    .contact-card b {
+      display: block;
+      font-size: 19px;
+    }
+
+    .contact-card span {
+      color: rgba(255,255,255,.66);
+      font-size: 13px;
+    }
+
+    .contact-card strong {
+      color: var(--gold);
+      font-size: 22px;
+      white-space: nowrap;
+    }
+
+    footer {
+      margin-top: 100px;
+      border-top: 1px solid rgba(255,255,255,.14);
+      padding: 34px 0;
+      color: rgba(255,255,255,.64);
+      font-size: 13px;
+    }
+
+    .footer-inner {
+      width: min(1220px, 88vw);
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+      flex-wrap: wrap;
+    }
+
+    .footer-inner b {
+      color: var(--white);
+      font-weight: 600;
+    }
+
+    .reveal {
+      opacity: 0;
+      transform: translateY(18px);
+      transition: opacity .7s ease, transform .7s ease;
+    }
+
+    .reveal.is-visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .delay-1 {
+      transition-delay: .08s;
+    }
+
+    .delay-2 {
+      transition-delay: .16s;
+    }
+
+    .delay-3 {
+      transition-delay: .24s;
+    }
+
+    @media (max-width: 1080px) {
+      .hero-inner,
+      .belief-grid,
+      .method-layout,
+      .forum-layout,
+      .contact-layout {
+        grid-template-columns: 1fr;
+      }
+
+      .hero-panel {
+        max-width: 520px;
+      }
+
+      .hero h1 {
+        font-size: 82px;
+      }
+
+      .service-grid,
+      .team-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .process,
+      .stats-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .gallery {
+        grid-template-columns: 1fr;
+      }
+
+      .feature-photo {
+        min-height: 460px;
+      }
+
+      .method-sticky {
+        position: static;
+      }
+
+      .method-sticky img {
+        aspect-ratio: 16 / 9;
+      }
+    }
+
+    @media (max-width: 820px) {
+      .site-nav {
+        padding-left: 22px;
+        padding-right: 22px;
+      }
+
+      .nav-toggle {
+        display: inline-flex;
+      }
+
+      .nav-links {
+        position: fixed;
+        top: 70px;
+        left: 16px;
+        right: 16px;
+        display: grid;
+        gap: 0;
+        background: rgba(245,239,229,.98);
+        color: var(--ink);
+        border: 1px solid var(--line-light);
+        border-radius: 8px;
+        box-shadow: var(--shadow);
+        padding: 12px;
+        transform: translateY(-12px);
+        opacity: 0;
+        pointer-events: none;
+        transition: opacity .2s ease, transform .2s ease;
+      }
+
+      body.menu-open .nav-links {
+        opacity: 1;
+        transform: translateY(0);
+        pointer-events: auto;
+      }
+
+      .nav-links a {
+        padding: 14px 12px;
+        border-bottom: 1px solid var(--line-light);
+      }
+
+      .nav-links a:last-child {
+        border-bottom: 0;
+      }
+
+      .nav-links a::after {
+        display: none;
+      }
+
+      .brand-text strong {
+        font-size: 16px;
+      }
+
+      .brand-text span {
+        display: none;
+      }
+
+      .hero {
+        min-height: 90svh;
+      }
+
+      .hero::before {
+        background:
+          linear-gradient(90deg, rgba(17,19,21,.88), rgba(17,19,21,.48)),
+          linear-gradient(0deg, rgba(17,19,21,.68), rgba(17,19,21,.10));
+      }
+
+      .hero-inner {
+        width: min(100% - 40px, 1220px);
+        padding-top: 116px;
+        padding-bottom: 46px;
+        gap: 40px;
+      }
+
+      .hero h1 {
+        font-size: 62px;
+      }
+
+      .hero-copy {
+        font-size: 16px;
+      }
+
+      .section {
+        padding: 78px 0;
+      }
+
+      .wrap,
+      .stats-grid,
+      .footer-inner {
+        width: min(100% - 40px, 1220px);
+      }
+
+      .section-head {
+        grid-template-columns: 1fr;
+        gap: 22px;
+        margin-bottom: 36px;
+      }
+
+      .section-title,
+      .forum-copy h2,
+      .contact-copy h2 {
+        font-size: 40px;
+      }
+
+      .lead {
+        font-size: 24px;
+      }
+
+      .three-good,
+      .service-grid,
+      .process,
+      .slogan-wall,
+      .team-grid,
+      .forum-metrics {
+        grid-template-columns: 1fr;
+      }
+
+      .method-item {
+        grid-template-columns: 1fr;
+        gap: 12px;
+      }
+
+      .photo-tile,
+      .feature-photo,
+      .forum-photo {
+        min-height: 340px;
+      }
+
+      .contact-card {
+        align-items: flex-start;
+        flex-direction: column;
+      }
+
+      .contact-card strong {
+        font-size: 20px;
+      }
+    }
+
+    @media (max-width: 520px) {
+      body {
+        font-size: 15px;
+      }
+
+      .brand-mark {
+        width: 40px;
+        height: 40px;
+      }
+
+      .hero h1 {
+        font-size: 52px;
+      }
+
+      .hero-actions {
+        display: grid;
+        grid-template-columns: 1fr;
+      }
+
+      .btn {
+        width: 100%;
+      }
+
+      .stats-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .stat {
+        min-height: 120px;
+      }
+
+      .stat strong {
+        font-size: 36px;
+      }
+
+      .good-item,
+      .service-card,
+      .process-step,
+      .method-item,
+      .team-card {
+        padding: 24px;
+      }
+
+      .section-title,
+      .forum-copy h2,
+      .contact-copy h2 {
+        font-size: 34px;
+      }
+
+      .photo-caption b,
+      .slogan-card q {
+        font-size: 21px;
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      *,
+      *::before,
+      *::after {
+        scroll-behavior: auto !important;
+        transition: none !important;
+      }
+
+      .reveal {
+        opacity: 1;
+        transform: none;
+      }
+    }
+  </style>
+</head>
+<body>
+  <a class="skip-link" href="#main">跳到主要内容</a>
+
+  <nav class="site-nav" id="siteNav" aria-label="主导航">
+    <a class="brand" href="#top" aria-label="问对教育首页">
+      <span class="brand-mark" aria-hidden="true">
+        <img src="assets/logo-white.png" alt="">
+      </span>
+      <span class="brand-text">
+        <strong>问对教育</strong>
+        <span>Wendui Edu. Think Tank</span>
+      </span>
+    </a>
+
+    <button class="nav-toggle" id="navToggle" type="button" aria-label="打开导航" aria-controls="navLinks" aria-expanded="false">
+      <span aria-hidden="true"></span>
+    </button>
+
+    <div class="nav-links" id="navLinks">
+      <a href="#about">关于问对</a>
+      <a href="#services">核心服务</a>
+      <a href="#method">方法论</a>
+      <a href="#works">案例现场</a>
+      <a href="#forum">教育智库</a>
+      <a href="#contact">合作咨询</a>
+    </div>
+  </nav>
+
+  <header class="hero" id="top">
+    <div class="hero-media" aria-hidden="true">
+      <img src="assets/hero-culture-cubes.jpg" alt="">
+    </div>
+    <div class="hero-inner">
+      <div>
+        <div class="eyebrow reveal">为学校立魂 · 让设计落地</div>
+        <h1 class="reveal delay-1">问对教育</h1>
+        <p class="hero-copy reveal delay-2">
+          从教育媒体、教师研修到学校文化顶层设计与办学咨询，问对教育智库以系统设计助推中国学校文化生态改善，让每一所学校成为<strong>好品位、好品质、好品牌</strong>的三好学校。
+        </p>
+        <div class="hero-actions reveal delay-3">
+          <a class="btn btn-primary" href="#services">查看服务体系</a>
+          <a class="btn btn-ghost" href="#contact">预约合作咨询</a>
+        </div>
+      </div>
+
+      <aside class="hero-panel reveal delay-2" aria-label="品牌信条">
+        <img src="assets/logo-white.png" alt="问对教育 Wendui Edu. Think Tank">
+        <p>Seek, and Ye Shall Find · 寻找就寻见</p>
+        <div class="hero-note">
+          <b>问</b>
+          <span>把学校最根本的问题问出来，把真正属于这所学校的答案找回来。</span>
+        </div>
+      </aside>
+    </div>
+  </header>
+
+  <main id="main">
+    <section class="stats-band" aria-label="问对教育数据">
+      <div class="stats-grid">
+        <div class="stat reveal">
+          <strong data-count="25">25+</strong>
+          <span>年教育设计与学校文化探索</span>
+        </div>
+        <div class="stat reveal delay-1">
+          <strong data-count="1000">1,000+</strong>
+          <span>余所学校深度对话与研究</span>
+        </div>
+        <div class="stat reveal delay-2">
+          <strong data-count="400">400+</strong>
+          <span>近 400 个文化与品牌服务案例</span>
+        </div>
+        <div class="stat reveal delay-3">
+          <strong data-count="20">20+</strong>
+          <span>多个省市自治区服务足迹</span>
+        </div>
+      </div>
+    </section>
+
+    <section class="section section-light" id="about">
+      <div class="wrap">
+        <div class="section-head reveal">
+          <div>
+            <div class="section-kicker">ABOUT WENDUI</div>
+            <h2 class="section-title">我们的工作，是找到一所学校真正的灵魂。</h2>
+          </div>
+          <p class="section-intro">问对不把学校文化理解为墙面装饰，而把它看作一所学校的战略罗盘、育人装置、传播系统与日常场景。</p>
+        </div>
+
+        <div class="belief-grid">
+          <div class="belief-copy reveal">
+            <p class="lead">
+              一所学校的文化顶层，决定它的<em>品位、品质与品牌</em>。好的设计不是把词写漂亮，而是让组织因此看见方向，让师生因此获得力量。
+            </p>
+            <p class="body-text">问对教育智库创立于成都，长期为体制内外学校、教育服务机构、教育企业、教育综合体提供高品质教育设计服务。我们从调研诊断出发，和学校管理者、教师、学生共同梳理使命、愿景、价值观、育人目标与传播符号。</p>
+            <p class="body-text">真正有效的文化建设，需要能解释学校从哪里来、要到哪里去，也需要能落在课程、空间、制度、活动、品牌传播和教师发展的一件件具体事里。</p>
+          </div>
+
+          <div class="principles reveal delay-1">
+            <article class="principle">
+              <small>MISSION</small>
+              <strong>助推中国学校文化生态改善</strong>
+            </article>
+            <article class="principle">
+              <small>VISION</small>
+              <strong>每个设计都成就一所好学校</strong>
+            </article>
+            <article class="principle">
+              <small>VALUES</small>
+              <strong>聚焦人本 · 秉持真诚 · 死磕专业 · 引领需求</strong>
+            </article>
+          </div>
+        </div>
+
+        <div class="three-good">
+          <article class="good-item reveal">
+            <b>好品位</b>
+            <p>确立一套高屋建瓴的理念体系，回答学校为什么存在、未来要办成什么样、共同坚守什么。</p>
+          </article>
+          <article class="good-item reveal delay-1">
+            <b>好品质</b>
+            <p>建构一套高效赋能的育人体系，把使命、愿景与价值观落到治理、课程、教师发展和学生成长。</p>
+          </article>
+          <article class="good-item reveal delay-2">
+            <b>好品牌</b>
+            <p>建设高能传播的符号体系和空间场景，让学校被看见、被理解，也被师生日复一日地体验。</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="services">
+      <div class="wrap">
+        <div class="section-head reveal">
+          <div>
+            <div class="section-kicker">CORE SERVICES</div>
+            <h2 class="section-title">从文化顶层到空间落地，一套完整的学校发展服务。</h2>
+          </div>
+          <p class="section-intro">问对的服务不是单点交付，而是把理念、育人、符号、空间、传播和运营串成系统。</p>
+        </div>
+
+        <div class="service-grid">
+          <article class="service-card reveal">
+            <span class="service-index">01</span>
+            <div>
+              <h3>学校文化设计</h3>
+              <p>为学校建立可阐释、可传播、可执行的文化顶层。</p>
+            </div>
+            <ul>
+              <li>调研诊断与学校文化工作坊</li>
+              <li>理念体系：使命、愿景、价值观、育人目标</li>
+              <li>育人体系：德育、课程、治理、教师发展</li>
+              <li>符号体系：Slogan、Logo、IP 吉祥物</li>
+              <li>空间体系与校园文化落地</li>
+            </ul>
+          </article>
+
+          <article class="service-card reveal delay-1">
+            <span class="service-index">02</span>
+            <div>
+              <h3>教育品牌</h3>
+              <p>从识别系统到传播内容，放大学校独特的教育价值。</p>
+            </div>
+            <ul>
+              <li>视觉应用系统与导视系统设计</li>
+              <li>学校文创、服装、礼品与活动物料</li>
+              <li>校长 IP 与新媒体路线设计</li>
+              <li>学校宣传片、公众号与年度传播策划</li>
+              <li>品牌发布、招生传播与公众沟通</li>
+            </ul>
+          </article>
+
+          <article class="service-card reveal delay-2">
+            <span class="service-index">03</span>
+            <div>
+              <h3>办学咨询</h3>
+              <p>把文化战略转化为管理行动和真实的学校改进。</p>
+            </div>
+            <ul>
+              <li>学校发展规划与战略目标管理</li>
+              <li>管理者文化领导力提升</li>
+              <li>教师培训与团队文化建设</li>
+              <li>教育活动策划与仪式系统设计</li>
+              <li>学校评估、委托管理与陪跑顾问</li>
+            </ul>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section section-dark" id="method">
+      <div class="wrap">
+        <div class="method-layout">
+          <div class="method-sticky reveal">
+            <div class="section-kicker">METHODOLOGY</div>
+            <h2 class="section-title">问对学校文化顶层设计方法论</h2>
+            <p class="section-intro" style="margin: 22px 0 30px;">从“学校文化”走向“学校办学顶层规划与设计”，让理念能够进入组织、课程、空间和人的成长。</p>
+            <img src="assets/forum-strategy-installation.jpg" alt="学校文化创新问对现场的战略装置">
+          </div>
+
+          <div class="method-list">
+            <article class="method-item reveal">
+              <strong>01</strong>
+              <div>
+                <h3>高屋建瓴的理念体系</h3>
+                <p>确立学校使命、愿景、价值观、学生成长目标和教师发展目标。它是学校的战略罗盘，也是所有管理行动的基础设施。</p>
+              </div>
+            </article>
+            <article class="method-item reveal delay-1">
+              <strong>02</strong>
+              <div>
+                <h3>高效赋能的育人体系</h3>
+                <p>把理念落到治理、课程教学、教师发展、学生成长、校家社共育和空间规划，形成学校高水平运转的动能装置。</p>
+              </div>
+            </article>
+            <article class="method-item reveal delay-2">
+              <strong>03</strong>
+              <div>
+                <h3>高能传播的符号体系</h3>
+                <p>用核心话语、视觉标识、IP 形象和传播系统，把学校的价值主张变成易理解、易记忆、可演绎的公共表达。</p>
+              </div>
+            </article>
+            <article class="method-item reveal delay-3">
+              <strong>04</strong>
+              <div>
+                <h3>高适应性的空间场景</h3>
+                <p>优先把钱花在离学生最近的地方，区分速赢项目、战略项目与长效项目，让空间支撑学校战略，也让师生每天感受到改变。</p>
+              </div>
+            </article>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section section-light">
+      <div class="wrap">
+        <div class="section-head reveal">
+          <div>
+            <div class="section-kicker">WORKFLOW</div>
+            <h2 class="section-title">从一次提问，到一所学校的持续改变。</h2>
+          </div>
+          <p class="section-intro">每个项目都从真实处境出发，既看见理想，也处理现实的局限。</p>
+        </div>
+
+        <div class="process">
+          <article class="process-step reveal">
+            <span>1</span>
+            <h3>调研诊断</h3>
+            <p>实地考察、访谈、问卷、资料研究，厘清学校历史基因、现实问题和未来诉求。</p>
+          </article>
+          <article class="process-step reveal delay-1">
+            <span>2</span>
+            <h3>共创工作坊</h3>
+            <p>让管理者、骨干教师和关键参与者共同进入价值澄清，形成真实认同。</p>
+          </article>
+          <article class="process-step reveal delay-2">
+            <span>3</span>
+            <h3>系统设计</h3>
+            <p>完成理念、育人、符号、视觉应用与空间策略，形成可执行的系统方案。</p>
+          </article>
+          <article class="process-step reveal delay-3">
+            <span>4</span>
+            <h3>落地陪跑</h3>
+            <p>围绕空间、课程、传播、制度和活动持续迭代，让文化真正进入学校日常。</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="works">
+      <div class="wrap">
+        <div class="section-head reveal">
+          <div>
+            <div class="section-kicker">SELECTED WORKS</div>
+            <h2 class="section-title">案例不是作品集，而是一所所学校的真实生长。</h2>
+          </div>
+          <p class="section-intro">从校徽升级、核心话语、课程空间，到论坛策展与教育场景营造，问对把设计放在真实教育现场里验证。</p>
+        </div>
+
+        <div class="gallery">
+          <article class="feature-photo reveal">
+            <img src="assets/design-wall.jpg" alt="第二届学校文化创新问对的设计墙现场">
+            <div class="photo-caption">
+              <b>设计不是装饰，是一次重新提问</b>
+              <span>第二届学校文化创新问对 · 设计的力量</span>
+            </div>
+          </article>
+          <div class="photo-stack">
+            <article class="photo-tile reveal delay-1">
+              <img src="assets/design-booth.jpg" alt="教育设计展台现场">
+              <div class="photo-caption">
+                <b>把抽象理念变成可进入的场景</b>
+                <span>展陈、活动与学校文化空间</span>
+              </div>
+            </article>
+            <article class="photo-tile reveal delay-2">
+              <img src="assets/case-huhaitang.jpg" alt="学校视觉应用设计案例">
+              <div class="photo-caption">
+                <b>一套符号系统，进入学校日常</b>
+                <span>视觉应用 · 导视 · 用品 · 传播</span>
+              </div>
+            </article>
+          </div>
+        </div>
+
+        <div class="slogan-wall">
+          <article class="slogan-card reveal">
+            <q>见山 见水 见未来</q>
+            <small>中南大学第一附属小学 · 核心话语</small>
+          </article>
+          <article class="slogan-card reveal delay-1">
+            <q>打开更美的世界</q>
+            <small>成都市新都区锦门小学 · 核心话语</small>
+          </article>
+          <article class="slogan-card reveal delay-2">
+            <q>每一天都是新的</q>
+            <small>龙港实验小学 · 核心话语</small>
+          </article>
+          <article class="slogan-card reveal">
+            <q>你生而有翼</q>
+            <small>简阳市射洪坝解放学校 · 核心话语</small>
+          </article>
+          <article class="slogan-card reveal delay-1">
+            <q>一直一直朝前走</q>
+            <small>衡阳市第二实验幼儿园 · 核心话语</small>
+          </article>
+          <article class="slogan-card reveal delay-2">
+            <q>连接无限可能</q>
+            <small>双流实小外国语学校 · 核心话语</small>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section section-red" id="forum">
+      <div class="wrap">
+        <div class="forum-layout">
+          <div class="forum-copy reveal">
+            <div class="section-kicker">WENDUI THINK TANK</div>
+            <h2>学校文化创新问对，是问对持续发起的教育思想现场。</h2>
+            <p>2024 年，我们相聚成都，首启“战略的力量”。2025 年，以“文化顶层 · 设计的力量”为题，继续锚方向、立标准、定量规。问对希望让校长、教育家、建筑师、设计师和一线学校在真实问题中彼此照见。</p>
+            <div class="forum-metrics" aria-label="创新问对">
+              <div>
+                <b>2024</b>
+                <span>第一届 · 战略的力量</span>
+              </div>
+              <div>
+                <b>2025</b>
+                <span>第二届 · 设计的力量</span>
+              </div>
+              <div>
+                <b>2026</b>
+                <span>第三届 · 治理与未来</span>
+              </div>
+            </div>
+          </div>
+          <div class="forum-photo reveal delay-1">
+            <img src="assets/forum-speaker.jpg" alt="学校文化创新问对专家报告现场">
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section section-light">
+      <div class="wrap">
+        <div class="section-head reveal">
+          <div>
+            <div class="section-kicker">EXPERT NETWORK</div>
+            <h2 class="section-title">链接教育先锋，也链接跨界专业力量。</h2>
+          </div>
+          <p class="section-intro">问对通过杂志、培训、校长学校、学校顶层设计与区域教育评估，凝聚了体制内外的教育专家、校长、设计师与研究者。</p>
+        </div>
+
+        <div class="expert-cloud reveal">
+          <span class="expert-pill"><b>李希贵</b><span>教育家</span></span>
+          <span class="expert-pill"><b>卢志文</b><span>翔宇教育集团总校长</span></span>
+          <span class="expert-pill"><b>程红兵</b><span>教育专家</span></span>
+          <span class="expert-pill"><b>魏勇</b><span>教育学者</span></span>
+          <span class="expert-pill"><b>姚敏</b><span>教育实践者</span></span>
+          <span class="expert-pill"><b>唐菲比</b><span>学校文化顶层设计</span></span>
+          <span class="expert-pill"><b>卢浩</b><span>学校视觉美学</span></span>
+          <span class="expert-pill"><b>钟志远</b><span>学校场景美学</span></span>
+          <span class="expert-pill"><b>李勇</b><span>问对教育智库理事长</span></span>
+          <span class="expert-pill"><b>许薇</b><span>学校运营</span></span>
+          <span class="expert-pill"><b>徐慧</b><span>学校顶层设计</span></span>
+          <span class="expert-pill"><b>刘东辉</b><span>品牌广告设计</span></span>
+        </div>
+
+        <div class="team-grid" style="margin-top: 52px;">
+          <article class="team-card reveal">
+            <h3>李玉龙</h3>
+            <div class="role">问对教育创始人</div>
+            <p>中国教育媒体风云人物，《教师之友》《读写月报 · 新教育》主编，长期链接教育专家、名校与名师资源。</p>
+          </article>
+          <article class="team-card reveal delay-1">
+            <h3>唐菲比</h3>
+            <div class="role">问对教育设计总监</div>
+            <p>学校文化顶层设计专家、教育品牌专家，“问对教育”微信公众号主编，原《齐鲁晚报》记者。</p>
+          </article>
+          <article class="team-card reveal delay-2">
+            <h3>卢浩</h3>
+            <div class="role">问对设计总监</div>
+            <p>学校视觉美学专家，原《四川日报》《成都晚报》美术副总监，长期主导学校品牌视觉与出版设计。</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section contact" id="contact">
+      <div class="wrap contact-layout">
+        <div class="contact-copy reveal">
+          <div class="section-kicker">CONTACT</div>
+          <h2>让我们一起，为你的学校寻见答案。</h2>
+          <p>学校文化设计 · 教育品牌 · 办学咨询 · 空间场景 · 学校文化工作坊。欢迎致电，与问对开启一次真正的对话。</p>
+        </div>
+
+        <div class="contact-actions">
+          <a class="contact-card reveal delay-1" href="tel:13008169680">
+            <span><b>唐老师</b><span>合作咨询</span></span>
+            <strong>130 0816 9680</strong>
+          </a>
+          <a class="contact-card reveal delay-2" href="tel:15528799970">
+            <span><b>卢老师</b><span>合作咨询</span></span>
+            <strong>155 2879 9970</strong>
+          </a>
+        </div>
+      </div>
+
+      <footer>
+        <div class="footer-inner">
+          <div><b>成都问对教育顾问有限公司</b> · WENDUI EDUCATION THINK TANK</div>
+          <div>Seek, and Ye Shall Find · 寻找就寻见</div>
+        </div>
+      </footer>
+    </section>
+  </main>
+
+  <script>
+    const nav = document.getElementById("siteNav");
+    const navToggle = document.getElementById("navToggle");
+    const navLinks = document.getElementById("navLinks");
+    const brandMarkImage = document.querySelector(".brand-mark img");
+
+    function syncNav() {
+      const scrolled = window.scrollY > 28;
+      nav.classList.toggle("is-scrolled", scrolled);
+      brandMarkImage.src = scrolled ? "assets/logo-gray.png" : "assets/logo-white.png";
+    }
+
+    syncNav();
+    window.addEventListener("scroll", syncNav, { passive: true });
+
+    navToggle.addEventListener("click", () => {
+      const open = document.body.classList.toggle("menu-open");
+      navToggle.setAttribute("aria-expanded", String(open));
+      navToggle.setAttribute("aria-label", open ? "关闭导航" : "打开导航");
+    });
+
+    navLinks.querySelectorAll("a").forEach((link) => {
+      link.addEventListener("click", () => {
+        document.body.classList.remove("menu-open");
+        navToggle.setAttribute("aria-expanded", "false");
+        navToggle.setAttribute("aria-label", "打开导航");
+      });
+    });
+
+    const revealObserver = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add("is-visible");
+          revealObserver.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.14 });
+
+    document.querySelectorAll(".reveal").forEach((el) => revealObserver.observe(el));
+
+    const countObserver = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (!entry.isIntersecting) return;
+        const el = entry.target;
+        const end = Number(el.dataset.count);
+        const start = performance.now();
+        const duration = 1300;
+
+        function tick(now) {
+          const progress = Math.min((now - start) / duration, 1);
+          const eased = 1 - Math.pow(1 - progress, 3);
+          el.textContent = Math.round(end * eased).toLocaleString("zh-CN") + "+";
+          if (progress < 1) requestAnimationFrame(tick);
+        }
+
+        requestAnimationFrame(tick);
+        countObserver.unobserve(el);
+      });
+    }, { threshold: 0.45 });
+
+    document.querySelectorAll("[data-count]").forEach((el) => countObserver.observe(el));
+  </script>
+</body>
+</html>
